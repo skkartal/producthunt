@@ -1,9 +1,13 @@
 {% extends 'base.html'%}
 
 {% block content %}
-
-<h1>Sign In</h1>
-<form method="GET" action="{% url 'signin' %}">
+{% if error %}
+{{error}}
+<br /><br />
+{% endif %}
+<br /><br />
+<h1>Log in</h1>
+<form method="POST" action="{% url 'login' %}">
 {% csrf_token %}
 Username:
 <br />
@@ -11,9 +15,9 @@ Username:
 <br />
 Password:
 <br />
-<input type="password" name="password1" placeholder="Your password" />
+<input type="password" name="password" placeholder="Your password" />
 <br />
 <br />
-<input class="btn btn-primary" type="submit" value="signup" />
+<input class="btn btn-primary" type="submit" value="Log in" />
 </form>
 {% endblock %}
